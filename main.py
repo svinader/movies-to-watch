@@ -20,16 +20,26 @@ while True:
     if choice == "1":
         # https://www.w3schools.com/python/python_dictionaries.asp
         # https://www.w3schools.com/python/python_lists_add.asp
-        title = input("Enter movie title: ")
-        rating = input("Enter movie rating: ")
+        movie = {
+            "title" : input("Enter movie title: "),
+            "rating" : input("Enter movie rating: "),
+        }
+        movies.append(movie)
+        with open("movies.json", "w") as outfile:
+            json.dump(movies, outfile)
         pass
     elif choice == "2":
         # https://www.w3schools.com/python/python_lists_sort.asp
         # https://www.w3schools.com/python/python_dictionaries_access.asp
+        def sort_rating(movie):
+            return float(movie["rating"])
+        movies.sort(key = sort_rating, reverse = True)
+        print(movies)
         pass
     elif choice == "3":
         # https://www.w3schools.com/python/python_lists_comprehension.asp
         # https://www.w3schools.com/python/python_dictionaries_access.asp
+
         pass
     elif choice == "4":
         # https://www.w3schools.com/python/python_lists_change.asp
@@ -38,6 +48,8 @@ while True:
     elif choice == "5":
         # https://www.w3schools.com/python/python_lists_remove.asp
         id = int(input("Enter the index of the movie to remove: "))
+        movies.pop(id)
+        
     elif choice == "6":
         print("Exiting...")
         break
